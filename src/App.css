@@ -1,11 +1,11 @@
-.App {
- 
+button {
+	background-color: #6b6b6b;
+	color: white;
+	border-radius: 5px;
+	padding: 3px;
+	box-sizing: border-box;
 }
 
-
-
-
-
-
-
-
+button:hover {
+	color: rgb(212, 212, 212);
+}

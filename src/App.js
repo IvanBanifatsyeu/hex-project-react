@@ -1,11 +1,11 @@
 import "./App.css";
-import HEXColorQuiz from "./components/HEXColorQuiz";
+import Board from "./components/Board";
 
 function App() {
 	return (
-		<>
-			<HEXColorQuiz />
-		</>
+		<div className="App">
+			<Board />
+		</div>
 	);
 }
 
