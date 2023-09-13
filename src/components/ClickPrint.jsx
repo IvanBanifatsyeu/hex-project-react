@@ -11,6 +11,7 @@ const ClickPrint = ({ top, left }) => {
 				top: top,
 				left: left,
 				borderRadius: "50%",
+				transform: "translate(-50%, -50%)",
 			}}
 		></div>
 	);

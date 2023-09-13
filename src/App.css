@@ -8,4 +8,11 @@ button {
 
 button:hover {
 	color: rgb(212, 212, 212);
+	cursor: pointer;
+}
+
+button:disabled {
+	opacity: 0.5;
+	color: white;
+	cursor: default;
 }

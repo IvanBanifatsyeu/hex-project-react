@@ -10,7 +10,7 @@ const Board = () => {
 		if (e.target.tagName === "DIV") {
 			setArrayClicks([
 				...arrayClicks,
-				{ x: e.clientX - 10 + "px", y: e.clientY - 10 + "px" },
+				{ x: e.clientX + "px", y: e.clientY + "px" },
 			]);
 			setCashClicks([]);
 		}
@@ -18,32 +18,33 @@ const Board = () => {
 
 	function handleUndo() {
 		if (arrayClicks.length === 0) return;
-		setCashClicks([...cashClicks, arrayClicks.pop()]);
+		setCashClicks([...cashClicks, arrayClicks.at(-1)]);
+		setArrayClicks(arrayClicks.slice(0, -1));
 	}
 
 	function handleRedo() {
 		if (cashClicks.length === 0) return;
-		setArrayClicks([...arrayClicks, cashClicks.pop()]);
+		setArrayClicks([...arrayClicks, cashClicks.at(-1)]);
+		setCashClicks(cashClicks.slice(0, -1));
 	}
 
 	return (
 		<div className="board" onClick={handleClick}>
 			<button
-				className={arrayClicks.length === 0 ? "empty" : ""}
 				onClick={handleUndo}
+				disabled={arrayClicks.length === 0 ? true : false}
 			>
 				Undo
 			</button>
 			<button
-				className={cashClicks.length === 0 ? "empty" : ""}
 				onClick={handleRedo}
+				disabled={cashClicks.length === 0 ? true : false}
 			>
 				Redo
 			</button>
-			{arrayClicks.length === 0 ||
-				arrayClicks.map((click, ind) => (
-					<ClickPrint key={ind} top={click.y} left={click.x} />
-				))}
+			{arrayClicks.map((click, ind) => (
+				<ClickPrint key={ind} top={click.y} left={click.x} />
+			))}
 		</div>
 	);
 };
